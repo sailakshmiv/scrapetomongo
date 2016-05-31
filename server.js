@@ -1,11 +1,18 @@
-var mongoose =  require('mongoose');
-mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
+var express = require('express');
+var morgan = require('morgan');
 
-var DeadSchema = new mongoose.Schema({
-    venue: {type: String, required: true},
-    date: {type: Date, required: true}
+var app = express();
+
+app.use(morgan('combined'));
+
+var deadshow = require('../models/dbmodel.js');
+var notes = require('../models/notes.js');
+
+var deadshow1 = new deadshow({venue:'Springfield Civic Center Arena', date:'March 25, 1985'});
+
+deadshow1.save();
+app.get('/', function(req, res){
+    res.send('hello world');
 });
 
-var DeadShow = mongoose.model("DeadShows", DeadSchema);
-
-var deadshow1 = new DeadShow({venue:'Springfield Civic Center Arena', date:'March 24, 1985'});
+app.listen(8080);
