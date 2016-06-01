@@ -1,1 +1,95 @@
-<h1>Example App: Home</h1>
+<h1>Dead Show Notes </h1>
+<p><i class="fa fa-bolt" aria-hidden="true"><i class="fa fa-bolt" aria-hidden="true"></i></i>Browse Listings of All
+    Grateful Dead Concerts and Add Notes About Your Favorites <i class="fa fa-bolt" aria-hidden="true"><i
+            class="fa fa-bolt" aria-hidden="true"></i></i>
+</p>
+<ul class="collection with-header shows">
+    <li class="collection-header"><h4>Show Date and Venue</h4></li>
+    {{#Deadshow}}
+        <li class="collection-item">
+            <div>
+                {{date}}  {{venue}}
+                <a href="#!" class="secondary-content" data-toggle="modal" data-target="#myModalHorizontal"><i
+                        class="btn waves-effect waves-purple">Note</i></a></div>
+        </li>
+        -->
+
+    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Show notes
+                    </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"
+                                   for="showNote">Note</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="showNote" placeholder="Note"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary">
+                        Save Note
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    {{/Deadshow}}
+</ul>
+
+<ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="/1964">1</a></li>
+    <li class="waves-effect"><a href="/1965">2</a></li>
+    <li class="waves-effect"><a href="/1966">3</a></li>
+    <li class="waves-effect"><a href="/1967">4</a></li>
+    <li class="waves-effect"><a href="/1968">5</a></li>
+    <li class="waves-effect"><a href="/1969">6</a></li>
+    <li class="waves-effect"><a href="/1970">7</a></li>
+    <li class="waves-effect"><a href="/1971">8</a></li>
+    <li class="waves-effect"><a href="/1972">9</a></li>
+    <li class="waves-effect"><a href="/1973">10</a></li>
+    <li class="waves-effect"><a href="/1974">11</a></li>
+    <li class="waves-effect"><a href="/1975">12</a></li>
+    <li class="waves-effect"><a href="/1976">13</a></li>
+    <li class="waves-effect"><a href="/1977">14</a></li>
+    <li class="waves-effect"><a href="/1978">15</a></li>
+    <li class="waves-effect"><a href="/1979">16</a></li>
+    <li class="waves-effect"><a href="/1980">17</a></li>
+    <li class="waves-effect"><a href="/1981">18</a></li>
+    <li class="waves-effect"><a href="/1982">19</a></li>
+    <li class="waves-effect"><a href="/1983">20</a></li>
+    <li class="waves-effect"><a href="/1984">21</a></li>
+    <li class="waves-effect"><a href="/1985">22</a></li>
+    <li class="waves-effect"><a href="/1986">23</a></li>
+    <li class="waves-effect"><a href="/1987">24</a></li>
+    <li class="waves-effect"><a href="/1988">25</a></li>
+    <li class="waves-effect"><a href="/1989">26</a></li>
+    <li class="waves-effect"><a href="/1990">27</a></li>
+    <li class="waves-effect"><a href="/1991">28</a></li>
+    <li class="waves-effect"><a href="/1992">29</a></li>
+    <li class="waves-effect"><a href="/1993">30</a></li>
+    <li class="waves-effect"><a href="/1994">31</a></li>
+    <li class="waves-effect"><a href="/1995">32</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+</ul>

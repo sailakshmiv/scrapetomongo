@@ -4,7 +4,6 @@
     <option name="serverConfigurations">
       <list>
         <ServerConfiguration>
-          <option name="connectOnIdeStartup" value="true" />
           <option name="label" value="sandbox" />
           <option name="password" value="secret" />
           <option name="serverUrls">
@@ -14,6 +13,15 @@
           </option>
           <option name="userDatabase" value="deadshows" />
           <option name="username" value="testuser" />
+        </ServerConfiguration>
+        <ServerConfiguration>
+          <option name="label" value="localinstance" />
+          <option name="serverUrls">
+            <list>
+              <option value="localhost:27017" />
+            </list>
+          </option>
+          <option name="userDatabase" value="deadshows" />
         </ServerConfiguration>
       </list>
     </option>
