@@ -1,0 +1,27 @@
+footer {
+    color: darkred;
+}
+
+body {
+    background: url('.././img/wallofsound.jpg');
+    background-size: repeat;
+    color: darkblue;
+}
+
+h1 {
+    color: darkblue;
+    background-color: azure;
+}
+
+a {
+    color: mediumblue;
+    background-color: azure;
+}
+
+.container {
+    background-color: azure;
+}
+
+.pagination {
+    background-color: azure;
+}

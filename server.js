@@ -9,8 +9,9 @@ var express = require('express');
 var app = express();
 
 
-var router = require('./routes.js');
+//var router = require('./routes.js');
 var Deadshow = require('./models/dbmodel.js');
+var Note = require('./models/note.js');
 var exphbs = require('express-handlebars');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -20,10 +21,11 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get("/:year", function (req, res) {
-    console.log('GET WAS CALLED');
-    var year = req.params.year;
 
+app.use('/public', express.static(__dirname + '/public'));
+
+app.get("/:year", function (req, res) {
+    var year = req.params.year;
 
     if (year < 1965 || year > 1995) {
         res.render('home', "Sorry, no shows found for this year");
@@ -40,11 +42,9 @@ app.get("/:year", function (req, res) {
             else {
                 res.render('home', {doc});
                 // res.json(doc);
-                console.log(doc);
+                // console.log(doc);
             }
-
         });
-
     }
 
 
@@ -56,7 +56,7 @@ app.get("/:year", function (req, res) {
 //================================
 
 // =============CLOUD===========//
-// mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
+//mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
 
 
 //==============LOCAL===========//
@@ -75,7 +75,20 @@ db.once('open', function () {
 });
 
 //============================
+app.post('/submit/:showId', function (req, res) {
 
+    var showId = req.params.showId;
+    console.log('showId has been passed to URL successfully:' + showId);
+    var showNote = req.params.body;
+    var newNote = new Note({show_id: showId, comment: showNote});
+    newNote.save(function (err, doc) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(doc);
+        }
+    });
+});
 
 //app.use(morgan('combined'));
 //============================
@@ -126,7 +139,6 @@ function scrape(gratefulUrl, showYear) {
 //=======================================
 // =====SCRAPER====END======
 //=======================================
-
 
 
 app.listen(5005);
