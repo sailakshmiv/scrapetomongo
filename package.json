@@ -1,39 +1,30 @@
 {
-  "name": "site_versus_site_rpg",
+  "name": "scrapetomongo",
   "version": "1.0.0",
-  "description": "Site Vs Site RPG is a turn based RPG where the stats of the players are culled from real web site analytics from Google Analytics' API\r   - Uses Node and MySQL to store site/player data\r   - Favicons from popular (and not so popular) sites form the basis for the player's in-game icon\r   - Player class determined by type of web sites chosen as part of one's party",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "description": "scraping of Grateful Dead shows dates and venues covering thirty years of shows.",
+  "main": "routes.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waltdakind/site_versus_site_rpg.git"
+    "url": "git+https://github.com/waltdakind/scrapetomongo.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/waltdakind/site_versus_site_rpg/issues"
+    "url": "https://github.com/waltdakind/scrapetomongo/issues"
   },
-  "homepage": "https://github.com/waltdakind/site_versus_site_rpg#readme",
+  "homepage": "https://github.com/waltdakind/scrapetomongo#readme",
   "dependencies": {
-    "awis": "^1.0.1",
-    "body-parser": "^1.15.1",
+    "cheerio": "^0.20.0",
     "express": "^4.13.4",
-    "jasmine": "^2.4.1",
-    "mysql": "^2.10.2",
-    "sequelize": "^3.23.0",
-    "sitemap.xml": "^1.0.0"
-  },
-  "devDependencies": {
-    "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-cli": "^1.0.0",
-    "karma-jasmine": "^1.0.2"
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0",
+    "request": "^2.72.0"
   }
 }
