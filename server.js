@@ -56,11 +56,11 @@ app.get("/:year", function (req, res) {
 //================================
 
 // =============CLOUD===========//
-//mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
+mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
 
 
 //==============LOCAL===========//
-mongoose.connect('mongodb://localhost/deadshows');
+//mongoose.connect('mongodb://localhost/deadshows');
 
 
 //==============================
