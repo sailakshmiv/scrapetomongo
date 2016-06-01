@@ -139,6 +139,9 @@ function scrape(gratefulUrl, showYear) {
 //=======================================
 // =====SCRAPER====END======
 //=======================================
+var PORT = process.env.PORT || 8080;
 
-
-app.listen(8080);
+//Listener 
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+});
