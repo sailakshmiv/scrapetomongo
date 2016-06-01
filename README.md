@@ -1,2 +1,3 @@
 # scrapetomongo
-scraping of simple web data to mongo db in a simple node app
+scraping of Grateful Dead shows dates and venues covering thirty years of shows.
+
