@@ -7,48 +7,36 @@ var mongoose = require('mongoose');
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var logger = require('morgan');
+var methodOverride = require('method-override');
 
 
-//var router = require('./routes.js');
-var Deadshow = require('./models/dbmodel.js');
-var Note = require('./models/note.js');
+var Deadshows = require('./models/dbmodel.js');
+
+var router = require('./routes/routes.js');
+
 var exphbs = require('express-handlebars');
+
+// use method overide
+app.use(methodOverride('X-HTTP-Method-Override'));
+
+// set up body-parser
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type: 'application/vnd.api+json'}));
+
+
+//logger in dev mode
+app.use(logger('dev'));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
-app.get('/', function (req, res) {
-    res.render('home');
-});
-
-
 app.use('/public', express.static(__dirname + '/public'));
 
-app.get("/:year", function (req, res) {
-    var year = req.params.year;
-
-    if (year < 1965 || year > 1995) {
-        res.render('home', "Sorry, no shows found for this year");
-    }
-
-    else {
-
-        Deadshow.find({date: new RegExp(year)}, function (err, doc) {
-
-            if (err) {
-                console.error(err);
-            }
-
-            else {
-                res.render('home', {doc});
-                // res.json(doc);
-                // console.log(doc);
-            }
-        });
-    }
-
-
-});
+app.use('/', router);
+app.use('/:year', router);
+app.use('/submit/:showId', router);
 
 //Database configuration
 //toggle between cloud based and local based on db instance below
@@ -56,11 +44,11 @@ app.get("/:year", function (req, res) {
 //================================
 
 // =============CLOUD===========//
-mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
+//mongoose.connect('mongodb://testuser:secret@ds019893.mlab.com:19893/deadshows');
 
 
 //==============LOCAL===========//
-//mongoose.connect('mongodb://localhost/deadshows');
+mongoose.connect('mongodb://localhost/deadshows');
 
 
 //==============================
@@ -75,20 +63,7 @@ db.once('open', function () {
 });
 
 //============================
-app.post('/submit/:showId', function (req, res) {
 
-    var showId = req.params.showId;
-    console.log('showId has been passed to URL successfully:' + showId);
-    var showNote = req.params.body;
-    var newNote = new Note({show_id: showId, comment: showNote});
-    newNote.save(function (err, doc) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(doc);
-        }
-    });
-});
 
 //app.use(morgan('combined'));
 //============================
@@ -114,7 +89,7 @@ function scrape(gratefulUrl, showYear) {
                 showDate = showData[1];
                 showVenue = showData[0];
                 console.log(showDate + ' ' + showVenue);
-                var deadshow1 = new Deadshow({venue: showVenue, date: showDate});
+                var deadshow1 = new Deadshows({venue: showVenue, date: showDate});
                 deadshow1.save(function (err, doc) {
                     if (err) {
                         console.log(err);

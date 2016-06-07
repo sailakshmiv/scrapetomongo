@@ -4,14 +4,24 @@ footer {
 
 body {
     background: url('.././img/wallofsound.jpg');
-    background-size: repeat;
+    background-size: 100%;
     color: darkblue;
 }
 
 h1 {
     color: darkblue;
     background-color: azure;
+    text-align: center
 }
+
+tr:nth-child(even) {
+    background: #CCC
+}
+
+tr:nth-child(odd) {
+    background: #FFF
+}
+
 
 a {
     color: mediumblue;

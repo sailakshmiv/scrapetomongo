@@ -15,5 +15,6 @@ var DeadSchema = new Schema({
 });
 
 //=============================================================
-var Deadshow = mongoose.model('Deadshow', DeadSchema);
-module.exports = Deadshow;
+var Deadshows = mongoose.model('Deadshows', DeadSchema);
+module.exports = Deadshows;
+

@@ -1,26 +1,52 @@
 <h1>Dead Show Notes </h1>
+
 <p><i class="fa fa-bolt" aria-hidden="true"><i class="fa fa-bolt" aria-hidden="true"></i></i>Browse Listings of All
     Grateful Dead Concerts and Add Notes About Your Favorites <i class="fa fa-bolt" aria-hidden="true"><i
             class="fa fa-bolt" aria-hidden="true"></i></i>
 </p>
-<ul class="collection with-header shows">
-    <li class="collection-header"><h4>Show Date and Venue</h4></li>
+<table>
+    <tr>
+        <th> Show Date</th>
+        <th> Venue</th>
+        <th> Notes</th>
+    </tr>
     {{#each doc}}
-        <li class="collection-item">
-            <div>
-                {{this.date}} ---  {{this.venue}}
-                <br>
+
+        <td>
+
+            {{this.date}}
+        </td>
+
+        <td>
+            {{this.venue}}
+        </td>
+
+        <td>
                 <form action="/submit/{{this.id}}" method="post">
+                    <input type="text" name="noteAuthor" placeholder="Name">
                     <input type="text" name="showNote" placeholder="Comments">
-                    <input type="submit">
-                </form>
-        </li>
+                    <button id="submitNote" type="submit">Submit Comment</button>
+
+        </td>
+        <td>
+            <div id="noteDisplay">
+                <span id="{{this.id}}"> </span>
+                <!-- <div class="Note"> -->
+                <!-- <p class="noteAuthor">Name goes here <span class="deleteButton">X</span></p> -->
+                <!-- <p class="noteText">Text of comment goes here</p> -->
+                <!-- <p class="noteTime">Time of the comment.</p> -->
+            </div>
+        </td>
+
+
+        </tr>
+
     {{/each}}
 
-
+</table>
 
 <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="waves-effect"><i class="material-icons">chevron_left</i></li>
 
     <li class="waves-effect"><a href="/1965">1965</a></li>
     <li class="waves-effect"><a href="/1966">1966</a></li>
@@ -53,5 +79,5 @@
     <li class="waves-effect"><a href="/1993">1993</a></li>
     <li class="waves-effect"><a href="/1994">1994</a></li>
     <li class="waves-effect"><a href="/1995">1995</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    <li class="waves-effect"><i class="material-icons">chevron_right</i></li>
 </ul>

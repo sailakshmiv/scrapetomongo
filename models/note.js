@@ -10,12 +10,13 @@ var Schema = mongoose.Schema;
 
 //================================================================================================
 // Creates a Notes Schema. This will be the basis of how dates and venues are stored in the db
-var NoteSchema = new Schema({
+var NotesSchema = new Schema({
+    author: {type: String, required: true},
     comment: {type: String, required: true},
     date: {type: String, default: Date.now, required: true},
     show_id: {type: String, required: true}
 });
 
 //=============================================================
-var Note = mongoose.model('Note', NoteSchema);
-module.exports = Note;
+var Notes = mongoose.model('Notes', NotesSchema);
+module.exports = Notes;
