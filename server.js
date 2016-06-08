@@ -11,13 +11,15 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var methodOverride = require('method-override');
 
+var favicon = require('serve-favicon');
 
 var Deadshows = require('./models/dbmodel.js');
 
 var router = require('./routes/routes.js');
 
 var exphbs = require('express-handlebars');
-
+//favicon 
+app.use(favicon(__dirname + '/public/favicon.ico'));
 // use method overide
 app.use(methodOverride('X-HTTP-Method-Override'));
 
