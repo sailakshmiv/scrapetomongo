@@ -20,8 +20,8 @@ var commentForm = function () {
         show_id: $('#id span').val(),
         date: Date.now()
     };
-    var url = '/submit' + show_id;
-    console.log(url);
+    var url = '/submit/' + show_id;
+
     // if data.title or data.body is empty, stop the function
     if (data.title == "" || data.body == "") {
         return false
@@ -29,6 +29,7 @@ var commentForm = function () {
 
 
     $('button').bind("click", function () {
+        console.log(url);
         commentForm();
 
         // make the api call
@@ -37,35 +38,13 @@ var commentForm = function () {
             alert($this.text());
             // on success, reload the article, along with new comment
             //TODO create dispComment function
-            dispComment();
+          //  dispComment();
         })
     });
 
 };
 
-// add delete functionality to spanned X buttons
-const deleteComment = function (span) {
 
-    // grab the comment id
-    var commentId = span.attr('data-id');
-
-    // make the url
-    var url = "api/r-comment/" + commentId;
-
-    // grab the article id
-    var data = {
-        a_id: $('.article').attr('data-id')
-    };
-    // make the ajax call
-    $.ajax({
-        url: url,
-        type: 'DELETE',
-        data: data,
-        success: function () {
-            dispArticle();
-        }
-    });
-};
 
 // on pressing comment submit button
 $(document).on('click', '#submit', function () {

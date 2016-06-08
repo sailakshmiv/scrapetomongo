@@ -23,6 +23,7 @@
 
         <td>
                 <form action="/submit/{{this.id}}" method="post">
+                    <input type="hidden" type="text" name="showId" value={{this.id}}>
                     <input type="text" name="noteAuthor" placeholder="Name">
                     <input type="text" name="showNote" placeholder="Comments">
                     <button id="submitNote" type="submit">Submit Comment</button>

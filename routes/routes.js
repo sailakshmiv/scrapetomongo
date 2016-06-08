@@ -3,7 +3,7 @@
  */
 const express = require("express");
 var router = express.Router();
-//var app = express();
+
 
 var Deadshow = require("./../models/dbmodel.js");
 var Notes = require('./../models/note.js');
@@ -43,44 +43,24 @@ router.get("/:year", function (req, res, next) {
 
 
 });
-router.get('/submit/:showId', function (req, res) {
-    // find the article that matches the id from the req.param
-    Deadshows.findOne({'_id': req.params.id})
-        .populate('comment')
-        // execute the command and send success message if it works
-        .exec(function (err, doc) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.json(doc);
-            }
-            var NotesSchema = new Schema({
-                author: req.body.author,
-                comment: req.body.comment,
-                show_id: req.params.id
-            });
 
-            Notes.save(function (err) {
-                if (err) return handleError(err);
-                // thats it!
-            });
-        });
-
-});
 
 
 router.post('/submit/:showId', function (req, res) {
-    console.log('POST was called');
+    console.log('-POST- was called');
     var showId = req.params.showId;
+    var author =  req.body.noteAuthor;
+    var comment = req.body.showNote;
     console.log('showId has been passed to URL successfully:' + showId);
     // var showNote = $(this);
-    var newNote = new Notes({show_id: showId, comment: req.body.comment});
+    var newNote = new Notes({show_id: showId, author: author, comment: comment});
     newNote.save(function (err, doc) {
         if (err) {
             console.log(err);
         } else {
             console.log(doc);
         }
+        res.redirect('/');
     });
 });
 
