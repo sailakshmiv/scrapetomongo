@@ -2,16 +2,6 @@
  * Created by Walter on 6/2/2016.
  */
 
-// articles array
-const Notes = [];
-
-// Note class constructor
-
-
-// on construction, push object to array specified in last arg
-// (e.g., the "articles" array)
-arr.push(this);
-}
 var commentForm = function () {
     // grab the form information, save it to data var
     var data = {
@@ -28,7 +18,7 @@ var commentForm = function () {
     }
 
 
-    $('button').bind("click", function () {
+    $('#submitNote').bind("click", function () {
         console.log(url);
         commentForm();
 
@@ -45,15 +35,16 @@ var commentForm = function () {
 };
 
 
-
-// on pressing comment submit button
-$(document).on('click', '#submit', function () {
-    commentForm();
+//TODO create route for viewing notes
+// on view comments button
+$(document).on('click', '#viewComments', function () {
+    var notesUrl = '/notes/' + $('#id span').val();
+    viewComments();
     // prevent refresh
     return false;
 });
 
-}
+
 
 // on pressing a delete button
 $(document).on('click', '.delete', function () {
