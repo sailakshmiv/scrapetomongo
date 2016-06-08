@@ -5,6 +5,7 @@ const express = require("express");
 var router = express.Router();
 
 
+
 var Deadshow = require("./../models/dbmodel.js");
 var Notes = require('./../models/note.js');
 
@@ -54,10 +55,15 @@ router.post('/submit/:showId', function (req, res) {
     console.log('showId has been passed to URL successfully:' + showId);
     // var showNote = $(this);
     var newNote = new Notes({show_id: showId, author: author, comment: comment});
+
     newNote.save(function (err, doc) {
         if (err) {
+            console.log('----------------------');
+            console.log('Write to mongo failed');
             console.log(err);
         } else {
+            console.log('----------------------');
+            console.log('New note saved to mongo');
             console.log(doc);
         }
         res.redirect('/');

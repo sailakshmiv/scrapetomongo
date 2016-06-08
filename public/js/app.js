@@ -16,14 +16,14 @@ var commentForm = function () {
     // grab the form information, save it to data var
     var data = {
         author: $('#name').val.trim(),
-        comment: $('#showNote').val().trim(),
+        comment: $('#showNote').val().trim,
         show_id: $('#id span').val(),
         date: Date.now()
     };
     var url = '/submit/' + show_id;
 
     // if data.title or data.body is empty, stop the function
-    if (data.title == "" || data.body == "") {
+    if (data.author == "" || data.comment == "") {
         return false
     }
 

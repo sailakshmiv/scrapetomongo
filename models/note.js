@@ -13,7 +13,7 @@ var Schema = mongoose.Schema;
 var NotesSchema = new Schema({
     author: {type: String, required: true},
     comment: {type: String, required: true},
-    date: {type: String, default: Date.now, required: true},
+    date: {type: Date, default: Date.now, required: true},
     show_id: {type: String, required: true}
 });
 
