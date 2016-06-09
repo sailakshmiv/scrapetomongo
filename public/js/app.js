@@ -7,9 +7,14 @@ var commentForm = function () {
     var data = {
         author: $('#name').val.trim(),
         comment: $('#showNote').val().trim,
-        show_id: $('#id span').val(),
-        date: Date.now()
+        show_id: $('span#id').val(),
+        date: Date.now(),
+        showIndex: $('div#indexNum').val()
     };
+
+    console.log(data.author);
+    console.log(data.comment);
+    console.log(showIndex);
     var url = '/submit/' + show_id;
 
     // if data.title or data.body is empty, stop the function
@@ -19,7 +24,7 @@ var commentForm = function () {
 
 
     $('#submitNote').bind("click", function () {
-        console.log(url);
+        console.log('note submit was called');
         commentForm();
 
         // make the api call

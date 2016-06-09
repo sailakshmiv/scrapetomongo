@@ -52,6 +52,9 @@ router.post('/submit/:showId', function (req, res) {
     var showId = req.params.showId;
     var author =  req.body.noteAuthor;
     var comment = req.body.showNote;
+    var showIndex = req.body.indexNum;
+
+    console.log(showIndex);
     console.log('showId has been passed to URL successfully:' + showId);
     // var showNote = $(this);
     var newNote = new Notes({show_id: showId, author: author, comment: comment});

@@ -7,12 +7,14 @@
     </div>
 <table class="highlight centered bordered">
     <tr>
+        <th> </th>
         <th> Show Date</th>
         <th> Venue</th>
         <th> Notes</th>
+        <th> </th>
     </tr>
     {{#each doc}}
-
+        <td> </td>
         <td>
 
             {{this.date}}
@@ -24,11 +26,13 @@
 
         <td>
                 <form action="/submit/{{this.id}}" method="post">
+                    <div id="indexNum" data-value="{{@index}}">
                     <input type="hidden" type="text" name="showId" value={{this.id}}>
                     <input type="text" name="noteAuthor" placeholder="Name">
                     <input type="text" name="showNote" placeholder="Comments">
                     <button id="submitNote" type="submit">Submit Comment</button>
-
+                    </div>
+                </form>
         </td>
         <td>
             <button id="viewComments" type="submit">View Comments</button>
