@@ -39,6 +39,8 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use('/', router);
 app.use('/:year', router);
 app.use('/submit/:showId', router);
+app.use('/notes/:showId', router);
+app.use('/delete/:noteId', router);
 
 //Database configuration
 //toggle between cloud based and local based on db instance below

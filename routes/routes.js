@@ -14,7 +14,48 @@ router.get('/', function (req, res) {
     res.render('home');
 });
 
+// define the show comment route based on showId
+router.get('/notes/:showId', function (req, res) {
 
+    var showId = req.params.showId;
+
+    console.log(showId);
+    Notes.find({show_id: showId}, function (err, doc) {
+
+        if (err) {
+            console.error(err);
+        }
+
+        else {
+            res.render('notes', {doc});
+            // res.json(doc);
+            console.log(doc);
+        }
+
+    });
+
+});
+// define the show comment route based on showId
+router.get('/delete/:noteId', function (req, res) {
+
+    var noteId = req.params.noteId;
+    console.log('delete note: '+ noteId);
+
+    Notes.remove({_id:noteId}, function (err, notes) {
+
+        if (err) {
+            console.error(err);
+        }
+
+        else {
+            res.render('notes', {notes});
+            // res.json(notes);
+            console.log(notes);
+        }
+
+    });
+
+});
 router.get("/:year", function (req, res, next) {
     //  console.log('GET WAS CALLED');
     var year = req.params.year;
@@ -55,7 +96,7 @@ router.post('/submit/:showId', function (req, res) {
     var showIndex = req.body.indexNum;
 
     console.log(showIndex);
-    console.log('showId has been passed to URL successfully:' + showId);
+    console.log('The showId has been passed to the URL successfully:  ' + showId);
     // var showNote = $(this);
     var newNote = new Notes({show_id: showId, author: author, comment: comment});
 

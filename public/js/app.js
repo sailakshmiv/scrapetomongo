@@ -7,9 +7,9 @@ var commentForm = function () {
     var data = {
         author: $('#name').val.trim(),
         comment: $('#showNote').val().trim,
-        show_id: $('span#id').val(),
+        show_id: $('#id').val(),
         date: Date.now(),
-        showIndex: $('div#indexNum').val()
+        showIndex: $('#indexNum').val()
     };
 
     console.log(data.author);

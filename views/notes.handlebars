@@ -7,47 +7,31 @@
     </div>
 <table class="highlight centered bordered">
     <tr>
-        <th> </th>
-        <th> Show Date</th>
-        <th> Venue</th>
-        <th> Notes</th>
-        <th> </th>
+        <th> Date </th>
+        <th> Author</th>
+        <th> Comment</th>
+        <th> Delete ?</th>
+
     </tr>
     {{#each doc}}
-        <td> </td>
         <td>
-
             {{this.date}}
         </td>
 
         <td>
-            {{this.venue}}
-        </td>
-
-        <td>
-                <form action="/submit/{{this.id}}" method="post">
-                    <div id="indexNum" data-value="{{@index}}">
-                    <input type="hidden" type="text" name="showId" value={{this.id}}>
-                    <input type="text" name="noteAuthor" placeholder="Name">
-                    <input type="text" name="showNote" placeholder="Comments">
-                    <button id="submitNote" type="submit">Submit Comment</button>
-                    </div>
-                </form>
+            {{this.author}}
         </td>
         <td>
-            <form action="/notes/{{this.id}}" method="get">
-            <button id="viewComments" type="submit">View Comments</button>
-            <div id="noteDisplay">
-                <span id="{{this.id}}"> </span>
-                <!-- <div class="Note"> -->
-                <!-- <p class="noteAuthor">Name goes here <span class="deleteButton">X</span></p> -->
-                <!-- <p class="noteText">Text of comment goes here</p> -->
-                <!-- <p class="noteTime">Time of the comment.</p> -->
-            </div>
+            {{this.comment}}
+        </td>
+        <td>
+            <form action="/delete/{{this.id}}" method="delete">
+                    <button id="deleteNote" type="submit">Delete Comment</button>
             </form>
         </td>
+<td>
 
-
+</td>
         </tr>
 
     {{/each}}
